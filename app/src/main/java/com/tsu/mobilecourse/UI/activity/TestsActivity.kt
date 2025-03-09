@@ -3,7 +3,6 @@ package com.tsu.mobilecourse.UI.activity
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.tsu.mobilecourse.UI.fragment.TestCardFragment
 import com.tsu.mobilecourse.databinding.ActivityTestsBinding

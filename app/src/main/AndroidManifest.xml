@@ -15,6 +15,15 @@
         <activity
             android:name=".UI.activity.ProfileActivity"
             android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".UI.activity.TestsActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".UI.activity.SearchActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.activity.TestsActivity"
+            android:name=".UI.activity.ChatActivity"
             android:exported="true">
         </activity>
     </application>

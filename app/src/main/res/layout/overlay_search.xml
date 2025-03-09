@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/overlay"
+    android:id="@+id/overlay"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            app:cardCornerRadius="25dp"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="15dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/profile_image"
+                            android:layout_marginEnd="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_vertical"
+                            android:layout_marginRight="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Имя"
+                                android:textSize="24sp"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Возраст и город"
+                                android:textSize="18sp"
+                                android:textColor="@color/gray" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/close"
+                            android:id="@+id/close">
+                        </ImageView>
+
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Интересы"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp">
+                    </TextView>
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/interestsContainer"
+                        app:flexWrap="wrap"
+                        app:flexDirection="row"
+                        app:alignItems="stretch"
+                        app:justifyContent="space_between">
+
+                        <TextView
+                            android:id="@+id/interest1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Интерес 1"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/interest2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Интерес 2"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/interest3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Интерес 3"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+
+
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Био"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp">
+                    </TextView>
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bioContainer"
+                        app:flexWrap="wrap"
+                        app:flexDirection="row"
+                        app:alignItems="stretch"
+                        app:justifyContent="space_between"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/bio1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Био 1"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/bio2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Био 2"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/bi3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="30dp"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                            android:gravity="center"
+                            android:text="Био 3"
+                            android:layout_marginBottom="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textSize="16sp" />
+
+
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="О себе"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст ">
+                    </TextView>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Написать"
+                    android:textSize="18sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="end"
+                    android:id="@+id/write">
+                </Button>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
