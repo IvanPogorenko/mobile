@@ -13,6 +13,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.tsu.mobilecourse.UI.fragment.BioCardFragment
+import com.tsu.mobilecourse.UI.fragment.NavigationFragment
 import com.tsu.mobilecourse.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity(), BioCardFragment.OnButtonClickListener {
@@ -89,6 +90,12 @@ class ProfileActivity : AppCompatActivity(), BioCardFragment.OnButtonClickListen
             val rotation = ObjectAnimator.ofFloat(binding.moreBio, "rotation", binding.moreBio.rotation, binding.moreBio.rotation + 180f)
             rotation.duration = 300
             rotation.start()
+        }
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.navContainer.id, NavigationFragment())
+                .commit()
         }
     }
 
