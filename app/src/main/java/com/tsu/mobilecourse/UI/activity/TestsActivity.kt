@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.tsu.mobilecourse.UI.fragment.NavigationFragment
 import com.tsu.mobilecourse.UI.fragment.TestCardFragment
 import com.tsu.mobilecourse.databinding.ActivityTestsBinding
 
@@ -52,6 +53,11 @@ class TestsActivity : AppCompatActivity(), TestCardFragment.OnButtonClickListene
                     .add(binding.fragmentsContainer.id, fragment)
                     .commit()
             }
+        }
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.navContainer.id, NavigationFragment())
+                .commit()
         }
     }
 

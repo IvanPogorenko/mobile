@@ -3,6 +3,7 @@ package com.tsu.mobilecourse.UI.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tsu.mobilecourse.UI.fragment.ChatMainFragment
+import com.tsu.mobilecourse.UI.fragment.NavigationFragment
 import com.tsu.mobilecourse.UI.fragment.PersonChatFragment
 import com.tsu.mobilecourse.databinding.ActivityChatBinding
 
@@ -43,6 +44,11 @@ class ChatActivity : AppCompatActivity(), ChatMainFragment.OnFragmentInteraction
                     .add(binding.chatContainer.id, fragment)
                     .commit()
             }
+        }
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.navContainer.id, NavigationFragment())
+                .commit()
         }
 
     }
