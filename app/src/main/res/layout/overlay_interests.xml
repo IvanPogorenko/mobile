@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/overlay"
+    android:id="@+id/overlay"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/close"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            app:cardCornerRadius="25dp"
+            android:layout_gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Выберите интересы"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:layout_marginBottom="20dp">
+                </TextView>
+
+
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/itemsContainer"
+                    app:flexWrap="wrap"
+                    app:flexDirection="row"
+                    app:alignItems="stretch"
+                    app:justifyContent="space_between">
+
+                    <TextView
+                        android:id="@+id/item1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"                       android:background="@drawable/selected"
+                        android:gravity="center"
+                        android:text="Item 1"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/item2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/selected"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="Item 2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/item3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"                        android:background="@drawable/selected"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="Item 2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textSize="16sp"/>
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_btn"
+                    android:layout_marginTop="20dp"
+                    android:text="Сохранить"
+                    android:textSize="18dp">
+                </Button>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
