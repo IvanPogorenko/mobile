@@ -53,12 +53,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Имя"
+                            android:id="@+id/name"
                             android:textSize="24sp"
                             android:textColor="#000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/cityAndAge"
                             android:text="Возраст и город"
                             android:textSize="18sp"
                             android:textColor="@color/gray" />

@@ -118,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_btn"
+                    android:id="@+id/saveInfo"
                     android:text="Сохранить"
                     android:textSize="18dp">
                 </Button>

@@ -8,24 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.tsu.mobilecourse.databinding.FragmentBioCardBinding
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class BioCardFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+    private var blockImg: Int = 0
+    private var blockName: String = ""
+    private var blockDescription: String = ""
+    private var buttonClickListener: (() -> Unit)? = null
 
     private lateinit var binding: FragmentBioCardBinding
-    private var listener: OnButtonClickListener? = null
-    interface OnButtonClickListener {
-        fun onBioButtonClicked(buttonId: String?)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            blockImg = it.getInt(ARG_BLOCK_IMG)
+            blockName = it.getString(ARG_BLOCK_NAME, "")
+            blockDescription = it.getString(ARG_BLOCK_DESCRIPTION, "")
         }
     }
 
@@ -40,44 +36,30 @@ class BioCardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args = arguments
-        if (args != null) {
-            val blockImgResId = args.getInt("blockImg")
-            val blockName = args.getString("blockName", "Название")
-            val blockDescription = args.getString("blockDescription", "Описание")
-            val btnId = args.getString("id")
+        binding.blockImg.setImageResource(blockImg)
+        binding.blockName.text = blockName
+        binding.blockDescription.text = blockDescription
 
-            binding.blockImg.setImageResource(blockImgResId)
-            binding.blockName.text = blockName
-            binding.blockDescription.text = blockDescription
-
-            binding.button.setOnClickListener{
-                listener?.onBioButtonClicked(btnId)
-            }
+        binding.button.setOnClickListener{
+            buttonClickListener?.invoke()
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnButtonClickListener) {
-            listener = context
-        } else {
-            throw RuntimeException("$context must implement OnButtonClickListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    fun setOnButtonClickListener(listener: () -> Unit) {
+        buttonClickListener = listener
     }
 
     companion object {
+        private const val ARG_BLOCK_IMG = "blockImg"
+        private const val ARG_BLOCK_NAME = "blockName"
+        private const val ARG_BLOCK_DESCRIPTION = "blockDescription"
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(blockImg: Int, blockName: String, blockDescription: String) =
             BioCardFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_BLOCK_IMG, blockImg)
+                    putString(ARG_BLOCK_NAME, blockName)
+                    putString(ARG_BLOCK_DESCRIPTION, blockDescription)
                 }
             }
     }
