@@ -52,6 +52,8 @@ dependencies {
 
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation ("androidx.activity:activity-ktx:1.7.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

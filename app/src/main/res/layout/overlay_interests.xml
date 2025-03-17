@@ -94,7 +94,7 @@
                         android:paddingBottom="10dp"                        android:background="@drawable/selected"
                         android:gravity="center"
                         android:layout_marginBottom="10dp"
-                        android:text="Item 2"
+                        android:text="Item 3"
                         android:clickable="true"
                         android:focusable="true"
                         android:textSize="16sp"/>
@@ -105,6 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_btn"
+                    android:id="@+id/saveInterests"
                     android:layout_marginTop="20dp"
                     android:text="Сохранить"
                     android:textSize="18dp">
