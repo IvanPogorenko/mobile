@@ -1,15 +1,16 @@
 package com.tsu.mobilecourse.UI.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.tsu.mobilecourse.data.db.TestEntity
 import com.tsu.mobilecourse.data.model.ProfileModel
-import com.tsu.mobilecourse.data.model.TestModel
+import com.tsu.mobilecourse.data.repository.FakeProfileRepository
 import com.tsu.mobilecourse.data.repository.ProfileRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -53,19 +54,17 @@ class ProfileViewModel (
                         if (currentState is ProfileUiState.Success) {
                             _uiState.value = ProfileUiState.Success(profile, currentState.tests)
                         } else {
-                            repository.getTests().collectLatest { tests ->
-                                _uiState.value = ProfileUiState.Success(profile, tests)
-                            }
+                            val tests = repository.getTests()
+                            _uiState.value = ProfileUiState.Success(profile, tests)
                         }
                     }
                 }
 
                 viewModelScope.launch {
-                    repository.getTests().collect { tests ->
-                        val currentState = _uiState.value
-                        if (currentState is ProfileUiState.Success) {
-                            _uiState.value = ProfileUiState.Success(currentState.profile, tests)
-                        }
+                    val tests = repository.getTests()
+                    val currentState = _uiState.value
+                    if (currentState is ProfileUiState.Success){
+                        _uiState.value = ProfileUiState.Success(currentState.profile, tests)
                     }
                 }
 
@@ -154,10 +153,11 @@ class ProfileViewModel (
         }
     }
 
-    class Factory(private val repository: ProfileRepository) : ViewModelProvider.Factory {
+    class Factory(private val context: Context) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+                val repository = FakeProfileRepository(context)
                 return ProfileViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
@@ -168,6 +168,6 @@ class ProfileViewModel (
 
 sealed class ProfileUiState {
     object Loading : ProfileUiState()
-    data class Success(val profile: ProfileModel, val tests: List<TestModel>) : ProfileUiState()
+    data class Success(val profile: ProfileModel, val tests: List<TestEntity>) : ProfileUiState()
     data class Error(val message: String) : ProfileUiState()
 }

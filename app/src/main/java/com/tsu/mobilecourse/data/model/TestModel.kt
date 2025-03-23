@@ -5,7 +5,6 @@ data class TestModel(
     val name: String,
     val shortDescription: String,
     val fullDescription: String,
-    val imageResId: Int,
     val result: String? = null,
     val isCompleted: Boolean = false
 )
