@@ -1,6 +1,9 @@
 package com.tsu.mobilecourse.data.repository
 
+import android.content.Context
 import com.tsu.mobilecourse.R
+import com.tsu.mobilecourse.data.db.AppDatabase
+import com.tsu.mobilecourse.data.db.TestEntity
 import com.tsu.mobilecourse.data.model.ProfileModel
 import com.tsu.mobilecourse.data.model.TestModel
 import kotlinx.coroutines.flow.Flow
@@ -10,7 +13,11 @@ import kotlinx.coroutines.flow.update
 interface ProfileRepository {
     fun getProfile(): Flow<ProfileModel>
     suspend fun updateProfile(profile: ProfileModel)
-    fun getTests(): Flow<List<TestModel>>
+
+    suspend fun getTests(): List<TestEntity>
+//    suspend fun saveTests(tests: List<TestModel>)
+
+
     suspend fun updateBio(bio: String)
     suspend fun updateInterests(interests: List<String>)
     suspend fun updatePersonalInfo(
@@ -22,7 +29,12 @@ interface ProfileRepository {
     )
 }
 
-class FakeProfileRepository : ProfileRepository {
+class FakeProfileRepository(
+    private val context: Context
+) : ProfileRepository {
+
+    private val database = AppDatabase.getDatabase(context)
+    private val testDao = database.testDao()
 
     private val _profileFlow = MutableStateFlow(
         ProfileModel(
@@ -39,34 +51,12 @@ class FakeProfileRepository : ProfileRepository {
         )
     )
 
-    private val _testsFlow = MutableStateFlow(
-        listOf(
-            TestModel(
-                id = 1,
-                name = "MBTI",
-                shortDescription = "Узнайте ваш тип личности и помогите в подборе собеседника",
-                fullDescription = "MBTI (Myers-Briggs Type Indicator) - это методика типирования личности, созданная Изабель Бриггс Майерс и Кэтрин Кук Бриггс на основе теории психологических типов Карла Густава Юнга. Тест поможет определить ваш тип личности из 16 возможных комбинаций.",
-                imageResId = R.drawable.mbti,
-                result = null,
-                isCompleted = false
-            ),
-            TestModel(
-                id = 2,
-                name = "Большая пятерка",
-                shortDescription = "Определите ваши основные черты личности",
-                fullDescription = "Тест 'Большая пятерка' (Big Five) измеряет пять основных черт личности: открытость опыту, добросовестность, экстраверсию, доброжелательность и нейротизм. Эта модель широко используется в психологии для описания личности.",
-                imageResId = R.drawable.mbti,
-                isCompleted = false
-            )
-        )
-    )
-
     override fun getProfile(): Flow<ProfileModel> {
         return _profileFlow
     }
 
-    override fun getTests(): Flow<List<TestModel>> {
-        return _testsFlow
+    override suspend fun getTests(): List<TestEntity> {
+        return testDao.getAllTests()
     }
 
     override suspend fun updateProfile(profile: ProfileModel) {
